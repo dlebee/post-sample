@@ -1,0 +1,9 @@
+overwrite: true
+schema: "https://json-placeholder-graphql.herokuapp.com/graphql"
+documents: "**/*.graphql"
+generates:
+  src/app/generated/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-apollo-angular"

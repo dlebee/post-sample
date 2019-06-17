@@ -1,0 +1,13 @@
+{
+  posts {
+    id
+    title
+    body
+    user {
+      id
+      name
+      username
+      email
+    }
+  }
+}
