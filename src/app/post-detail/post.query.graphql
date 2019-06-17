@@ -1,0 +1,11 @@
+query findPost($postId: Int) {
+  post(id: $postId) {
+    id
+    title
+    body
+    user {
+      username
+      email
+    }
+  }
+}
