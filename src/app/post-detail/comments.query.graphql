@@ -1,0 +1,6 @@
+query getPostComments($postId: Int) {
+  comments(postId: $postId) {
+    email,
+    body
+  }
+}

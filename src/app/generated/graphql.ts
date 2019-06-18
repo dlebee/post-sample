@@ -127,6 +127,16 @@ export type User = {
   phone?: Maybe<Scalars["String"]>;
   website?: Maybe<Scalars["String"]>;
 };
+export type GetPostCommentsQueryVariables = {
+  postId?: Maybe<Scalars["Int"]>;
+};
+
+export type GetPostCommentsQuery = { __typename?: "RootQueryType" } & {
+  comments: Maybe<
+    Array<Maybe<{ __typename?: "Comment" } & Pick<Comment, "email" | "body">>>
+  >;
+};
+
 export type FindPostQueryVariables = {
   postId?: Maybe<Scalars["Int"]>;
 };
@@ -147,6 +157,24 @@ export type AllPostsQuery = { __typename?: "RootQueryType" } & {
   >;
 };
 
+export const GetPostCommentsDocument = gql`
+  query getPostComments($postId: Int) {
+    comments(postId: $postId) {
+      email
+      body
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: "root"
+})
+export class GetPostCommentsGQL extends Apollo.Query<
+  GetPostCommentsQuery,
+  GetPostCommentsQueryVariables
+> {
+  document = GetPostCommentsDocument;
+}
 export const FindPostDocument = gql`
   query findPost($postId: Int) {
     post(id: $postId) {
